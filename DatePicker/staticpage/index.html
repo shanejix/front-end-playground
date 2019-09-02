@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+    <link rel="stylesheet" type='text/css' href='./datepickerstyle.css' />
+</head>
+
+<body>
+
+
+
+    <div id="datepicker-container">
+        <input id='datepicker-container-input' placeholder='请输入日期，格式：2019-8-31' />
+
+
+        <div id='datepicker-container-body'>
+            <header id='datepicker-container-body-header'>
+                <sapn>
+                    <a>&lt</a>
+                    <span>2019</span>
+                    <a>&gt</a>
+                    年
+                </sapn>
+                <sapn>
+                    <a>&lt</a>
+                    <span>8</span>
+                    <a>&gt</a>
+                    月
+                </sapn>
+                <sapn>
+                    <a>&lt</a>
+                    <span>31</span>
+                    <a>&gt</a>
+                    日
+                </sapn>
+            </header>
+            <main id='datepicker-container-body-main'>
+                <table>
+                    <thead>
+                        <tr>
+                            <td>一</td>
+                            <td>二</td>
+                            <td>三</td>
+                            <td>四</td>
+                            <td>五</td>
+                            <td>六</td>
+                            <td>日</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>30</td>
+                            <td>31</td>
+                            <td>1</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>4</td>
+                            <td>5</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>7</td>
+                            <td>8</td>
+                            <td>9</td>
+                            <td>10</td>
+                            <td>11</td>
+                            <td>12</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>7</td>
+                            <td>8</td>
+                            <td>9</td>
+                            <td>10</td>
+                            <td>11</td>
+                            <td>12</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>7</td>
+                            <td>8</td>
+                            <td>9</td>
+                            <td>10</td>
+                            <td>11</td>
+                            <td>12</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>7</td>
+                            <td>8</td>
+                            <td>9</td>
+                            <td>10</td>
+                            <td>11</td>
+                            <td>12</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>7</td>
+                            <td>8</td>
+                            <td>9</td>
+                            <td>10</td>
+                            <td>11</td>
+                            <td>12</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>7</td>
+                            <td>8</td>
+                            <td>9</td>
+                            <td>10</td>
+                            <td>11</td>
+                            <td>12</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </main>
+        </div>
+    </div>
+
+    <script src='./date.js'></script>
+    <script>
+        datePicker.say()
+    </script>
+</body>
+
+</html>

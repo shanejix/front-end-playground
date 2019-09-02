@@ -1,0 +1,82 @@
+#datepicker-container{
+    width: 380px;
+    border: 1px solid gray;
+    border-radius: 3px;
+    box-shadow: 2px 2px 5px grey;
+    margin: 50px auto;
+    padding: 30px;
+}
+
+#datepicker-container-input{
+    width: 100%;
+    height: 35px;
+    margin-top: 10px;
+}
+
+
+#datepicker-container-body{
+    width: 100%;
+    margin-top: 15px;
+    
+   /* display: none; */
+}
+
+
+#datepicker-container-body a{
+    
+    color: white;
+    cursor: pointer;
+}
+#datepicker-container-body td{
+    cursor: pointer;
+}
+#datepicker-container-body-header{
+    width: 100%;
+    height: 50px;
+    background-color: gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#datepicker-container-body-header span{
+    padding: 5px;
+}
+#datepicker-container-body-main{
+    margin-top: 10px;
+    width: 100%;
+}
+#datepicker-container-body-main table{
+    border: 1px solid gray;
+    width: 100%;
+    border-collapse: collapse;
+}
+#datepicker-container-body-main thead tr{
+    display: flex;
+    justify-content: space-around;
+}
+#datepicker-container-body-main thead tr td{
+    width:20px;
+    height: 20px;
+    padding: 5px;
+}
+#datepicker-container-body-main thead tr td:nth-child(7){
+    /* background-color: red; */
+    order: -1;
+}
+#datepicker-container-body-main tbody tr{
+    display: flex;
+    justify-content: space-around;
+}
+#datepicker-container-body-main tbody tr td{
+    /* border: 1px solid gray; */
+    text-align: center;
+    width:20px;
+    height: 20px;
+    padding: 5px;
+}
+#datepicker-container-body-main tbody tr td:nth-child(7){
+    order: -1;
+}
+#datepicker-container-body-main tbody tr td:hover{
+    background-color: blue;
+}
