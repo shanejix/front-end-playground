@@ -142,7 +142,7 @@
                 if (showDate === date && monthData.month === monthData.result[i].thisMonth) {
                     html += `<td class='checked' year=${year} month=${month} > ${showDate}  </td>`
                 } else {
-                    html += `<td  year=${year} month=${month} > ${showDate}  </td>`
+                    html += `<td  year=${year} month=${month} date=${showDate} > ${showDate}  </td>`
                 }
 
 
@@ -170,7 +170,7 @@
 
             let flag = true
 
-            if (!value.match(/[^\d-]/g)) {
+            if (!value.match(/[^\d-\s]/g)) {
                 let dateArr = value.split('-')
                 let [year, month, date] = dateArr
 
@@ -229,10 +229,20 @@
 
             document.getElementById('month-pre').onclick = function () {
                 month--
+                if (month === 0) {
+                    month = 12
+                    year--
+                }
+
+
                 that.init('datepicker-container-body', year, month, date)
             }
             document.getElementById('month-next').onclick = function () {
                 month++
+                if (month === 13) {
+                    month = 1
+                    year++
+                }
                 that.init('datepicker-container-body', year, month, date)
 
             }
@@ -250,10 +260,24 @@
             //切换天
             document.getElementById('date-pre').onclick = function () {
                 date--
+
+                let lastDayOfLastMonth = timeUtile.getLastDayOfMonth(year, month - 1)
+                if (date === 0) {
+                    date = lastDayOfLastMonth
+                    month--
+                }
+
                 that.init('datepicker-container-body', year, month, date)
             }
             document.getElementById('date-next').onclick = function () {
                 date++
+
+                let lastDayOfThisMonth = timeUtile.getLastDayOfMonth(year, month)
+
+                if (date > lastDayOfThisMonth) {
+                    date = 1
+                    month++
+                }
                 that.init('datepicker-container-body', year, month, date)
 
             }
@@ -261,17 +285,16 @@
             //点击弹窗
             document.getElementById('datepicker-container-body').onclick = function (e) {
 
-
-
                 console.log(nodeInput)
                 if (e.target.tagName === 'TD') {
                     console.log(e.target)
                     console.log(e.target.getAttribute('year'))
                     console.log(e.target.getAttribute('month'))
+                    console.log(e.target.getAttribute('date'))
 
                     let year = e.target.getAttribute('year')
                     let month = e.target.getAttribute('month')
-                    let date = e.target.innerHTML
+                    let date = e.target.getAttribute('date')
 
                     alert(`你选择的时间是${year}年${month}月${date}日`)
 
