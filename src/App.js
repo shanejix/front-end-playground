@@ -1,8 +1,13 @@
 import React from 'react';
 
+import Comment from './ReactComponent/ContainerAndUICom/Comment'
+
 function App() {
   return (
-   <div>make-wheels</div>
+    <div>
+      <Comment />
+      <div>holloe adfa</div>
+    </div>
   );
 }
 
