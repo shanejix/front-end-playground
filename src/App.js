@@ -4,11 +4,12 @@ import React from 'react';
 // import Count from './ReactComp/PureComponent/Count'
 // import Count from './ReactComp/Memo/Count'
 import Person from './ReactComp/HOC/Person'
+import WelcomeDialog from './ReactComp/Composition/WelcomeDialog'
 
 function App() {
   return (
     <div>
-      
+
       <div>hellow react!!!</div>
 
       {/* <Comment /> */}
@@ -16,6 +17,7 @@ function App() {
       {/* <Count /> */}
 
       <Person />
+      <WelcomeDialog />
 
     </div>
   );
