@@ -1,12 +1,16 @@
 import React from 'react';
 
-import Comment from './ReactComponent/ContainerAndUICom/Comment'
+// import Comment from './ReactComp/UICompAndContainerComp/Comment'
+import Count from './ReactComp/PureComponent/Count'
 
 function App() {
   return (
     <div>
-      <Comment />
-      <div>holloe adfa</div>
+      <div>hellow react!!!</div>
+
+      {/* <Comment /> */}
+
+      <Count />
     </div>
   );
 }

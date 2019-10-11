@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 
-import Comment from "./comment";
+import Comment from "./Comment";
 
-export default class commentList extends Component {
+export default class CommentList extends Component {
     constructor() {
         super();
 

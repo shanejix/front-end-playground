@@ -1,6 +1,6 @@
 import React from "react";
 
-import CommentList from "./commentList";
+import CommentList from "./CommentList";
 
 export default function index() {
     return (
