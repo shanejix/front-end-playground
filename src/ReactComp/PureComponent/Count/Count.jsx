@@ -24,11 +24,30 @@
 
 //2.定制shouldComponentUpdate后的Component
 
-import React, { PureComponent } from "react";
+// import React, { PureComponent } from "react";
+
+// export default class Count extends PureComponent {
+//   render() {
+//     console.log("render count");
+
+//     let { count } = this.props;
+//     return <div>{count}</div>;
+//   }
+// }
+
+
+
+
+//Implementation PureComponet 
+
+
+import React from "react";
+
+import PureComponent from '../Implementation'
 
 export default class Count extends PureComponent {
   render() {
-    console.log("render count");
+    console.log("render count (implementation)");
 
     let { count } = this.props;
     return <div>{count}</div>;
