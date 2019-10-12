@@ -11,6 +11,9 @@ import RadioGroup from './ReactComponent/Composition/RadioGroup'
 import Button from './ReactHooks/Button'
 import ContextDemo from './ReactContext/ContextDemo'
 
+import Form from './Form/Form'
+import AntdFormDemo from './Form/AntdFormDemo'
+
 function App() {
   return (
     <div>
@@ -29,6 +32,10 @@ function App() {
       <Button />
 
       <ContextDemo />
+
+      <Form />
+
+      <AntdFormDemo />
 
     </div>
   );
