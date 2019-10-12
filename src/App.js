@@ -7,6 +7,7 @@ import Person from './ReactComp/HOC/Person'
 // import WelcomeDialog from './ReactComp/Composition/WelcomeDialog01'
 // import WelcomeDialog from './ReactComp/Composition/WelcomeDialog02'
 import WelcomeDialog from './ReactComp/Composition/WelcomeDialog03'
+import RadioGroup from './ReactComp/Composition/RadioGroup'
 
 function App() {
   return (
@@ -20,6 +21,8 @@ function App() {
 
       <Person />
       <WelcomeDialog />
+
+      <RadioGroup />
 
     </div>
   );
