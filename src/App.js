@@ -16,7 +16,8 @@ import AntdFormDemo from './Form/AntdFormDemo'
 
 
 
-import CountRx from './Redux/ReduxDemo/Count'
+import RCount from './Redux/Demo/Count'
+import RRCount from './ReactRedux/Demo/Count'
 
 function App() {
   return (
@@ -41,7 +42,9 @@ function App() {
 
       <AntdFormDemo />
 
-      <CountRx />
+      <RCount />
+
+      <RRCount />
 
     </div>
   );
