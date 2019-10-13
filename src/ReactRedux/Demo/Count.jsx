@@ -17,7 +17,7 @@ function Count({ count, add, minus, asyncAdd }) {
 }
 
 const mapStateToProps = store => ({
-  count: store
+  count: store.count
 });
 
 //fixme:这样写没有效果哦
