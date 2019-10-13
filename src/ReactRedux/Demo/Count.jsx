@@ -5,11 +5,12 @@ import { connect } from "react-redux";
 
 import { add, minus } from "./store/actions";
 
-function Count({ count, add, minus }) {
+function Count({ count, add, minus, asyncAdd }) {
   return (
     <div>
       <span>{count}</span>
       <button onClick={() => add()}>+</button>
+      <button onClick={() => asyncAdd()}>+</button>
       <button onClick={() => minus()}>-</button>
     </div>
   );
@@ -28,6 +29,11 @@ const mapStateToProps = store => ({
 
 const mapDispatchToProps = {
   add,
+  asyncAdd: () => dispatch => {
+    setInterval(() => {
+      dispatch({ type: "add" });
+    }, 1000);
+  },
   minus
 };
 export default connect(
