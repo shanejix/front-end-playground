@@ -14,6 +14,10 @@ import ContextDemo from './ReactContext/ContextDemo'
 import Form from './Form/Form'
 import AntdFormDemo from './Form/AntdFormDemo'
 
+
+
+import CountRx from './Redux/ReduxDemo/Count'
+
 function App() {
   return (
     <div>
@@ -36,6 +40,8 @@ function App() {
       <Form />
 
       <AntdFormDemo />
+
+      <CountRx />
 
     </div>
   );

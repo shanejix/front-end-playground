@@ -41,6 +41,8 @@ function create(Comp) {
             return true;
           }
         }
+
+        return false
       });
 
       //校验成功，清空错误信息
