@@ -21,7 +21,7 @@ import RRCount from './ReactRedux/Count'
 
 import RRDDemo from './ReactRouter/Demo'
 
-import User from './ReduxSaga/User'
+import User from './ReduxSaga/User/index'
 
 function App() {
   return (

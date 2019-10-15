@@ -1,21 +1,26 @@
 
 
-const defaultState = {
+const defaultUser = {
   userId: '',
   message: ''
 }
 
-export default (state = defaultState, action) => {
+export default (user = defaultUser, action) => {
   switch (action.type) {
     case "USER_FETCH_SUCCEEDED":
-
-      return { user: action.user };
+      return {
+        userId: action.userId,
+        message:'fetch user success'
+      };
 
     case "USER_FETCH_FAILED":
 
-      return { user: action.message };
+      return {
+        userId: '',
+        message:'fetch userid false'
+      };
 
     default:
-      return state;
+      return user;
   }
 }

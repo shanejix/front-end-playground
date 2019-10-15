@@ -5,24 +5,28 @@ import React from "react";
 import { connect } from "react-redux";
 import { Button } from "antd";
 
-function User() {
-  const handleClick = ({ userId, dispatch }) => {
-    console.log(userId,dispatch);
-    
-    dispatch({ type: "USER_FETCH_REQUESTED", payload: { userId } });
-  };
-  return <Button onClick={handleClick}>click</Button>;
+import { fetchUser } from "../store/actions";
+
+import store from '../store'
+
+function User({ fetchUser, user }) {
+  return (
+    <div>
+      {console.log(user)}
+      {console.log(store.getState())}
+
+      <Button onClick={() => fetchUser("1")}>click</Button>
+    </div>
+  );
 }
 
-const mapStateToProps = state => ({
-  userId: state.userId
-});
-
-const mapDispatchToProps = dispatch => ({
-  dispatch
-});
+const mapDispatchToProps = {
+  fetchUser
+};
 
 export default connect(
-  mapStateToProps,
+  state => ({
+    user: state
+  }),
   mapDispatchToProps
 )(User);
