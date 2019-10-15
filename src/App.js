@@ -21,6 +21,8 @@ import RRCount from './ReactRedux/Count'
 
 import RRDDemo from './ReactRouter/Demo'
 
+import User from './ReduxSaga/User'
+
 function App() {
   return (
     <div>
@@ -49,6 +51,8 @@ function App() {
       <RRCount />
 
       <RRDDemo />
+
+      <User />
 
     </div>
   );
