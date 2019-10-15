@@ -2,25 +2,20 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 
-//react-redux
-import { Provider } from 'react-redux'
-import rr_store from './ReactRedux/Demo/store'
+
 
 //redux
-import store from './Redux/Demo/store'
+import store from './Redux/store'
+
 
 ReactDOM.render(
-  <Provider store={rr_store}>
-    <App />
-  </Provider>,
+  <App />,
   document.getElementById('root'));
 
 
 // redux subcribe
 store.subscribe(() => {
   ReactDOM.render(
-    <Provider store={rr_store}>
-      <App />
-    </Provider>,
+    <App />,
     document.getElementById('root'));
 })

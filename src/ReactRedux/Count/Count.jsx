@@ -3,7 +3,7 @@ import React from "react";
 //react-redux
 import { connect } from "react-redux";
 
-import { add, minus } from "./store/actions";
+import { add, minus } from "../store/actions";
 
 function Count({ count, add, minus, asyncAdd }) {
   return (

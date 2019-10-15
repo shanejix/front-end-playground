@@ -16,8 +16,8 @@ import AntdFormDemo from './Form/AntdFormDemo'
 
 
 
-import RCount from './Redux/Demo/Count'
-import RRCount from './ReactRedux/Demo/Count'
+import RCount from './Redux/Count/Count'
+import RRCount from './ReactRedux/Count'
 
 import RRDDemo from './ReactRouter/Demo'
 
