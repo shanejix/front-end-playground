@@ -7,15 +7,16 @@ import { Button } from "antd";
 
 import { fetchUser } from "../store/actions";
 
-import store from '../store'
-
 function User({ fetchUser, user }) {
+  const id = "1";
+
+  const handleClick = () => {
+    fetchUser(id);
+  };
   return (
     <div>
       {console.log(user)}
-      {console.log(store.getState())}
-
-      <Button onClick={() => fetchUser("1")}>click</Button>
+      <Button onClick={handleClick}>click</Button>
     </div>
   );
 }

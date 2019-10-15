@@ -46,8 +46,8 @@
 //3.0 next() 传值
 
 {
-  function* say() {
-    let a = yield '1'
+  function* say(payload={data:'sth'}) {
+    let a = yield payload
     console.log(a)
     let b = yield '2'
     console.log(b)

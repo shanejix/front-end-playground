@@ -10,7 +10,7 @@ import Api from '../API'
 function* fetchUser(action) {
   try {
     const user = yield call(Api.fetchUser, action.payload.userId);
-    console.log(user);
+    
     
     yield put({ type: "USER_FETCH_SUCCEEDED", user: user });
   } catch (e) {

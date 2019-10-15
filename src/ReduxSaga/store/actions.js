@@ -1,3 +1,4 @@
-export function fetchUser(userId){
-  return { type: "USER_FETCH_REQUEST", payload: { userId:userId } }
+export function fetchUser(userId) {
+  
+  return { type:"USER_FETCH_REQUESTED", payload: { userId:userId } }
 }
