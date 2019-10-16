@@ -3,7 +3,12 @@
 // and triggers an API call to fetch the user data.
 
 
-import { call, put, takeEvery, takeLatest } from 'redux-saga/effects'
+import {
+  call,
+  put,
+  takeEvery,
+  // takeLatest
+} from 'redux-saga/effects'
 import Api from '../API'
 
 // worker Saga: will be fired on USER_FETCH_REQUESTED actions
