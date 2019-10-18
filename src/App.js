@@ -1,10 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom'
 
-
-import Layout from './Layout'
-
-
+import { Layout, AutoComplete } from 'antd';
 
 // import Comment from './ReactComp/UICompAndContainerComp/Comment'
 // import Count from './ReactComp/PureComponent/Count'
@@ -29,59 +26,107 @@ import RRDDemo from './ReactRouter/Demo'
 
 import User from './ReduxSaga/User/index'
 
+import Card from './MyCard'
 
-function NotFound() {
-  return (
-    <div>
-      <Form />
-      <AntdFormDemo />
-      <RCount />
-      <RRCount />
-      <RRDDemo />
-      <User />
-    </div>
-  )
-}
+
+
+
+const { Header, Footer, Content } = Layout;
+
+
+
 function App() {
   return (
     <BrowserRouter>
       <Layout>
 
-        <div className="nav">
-          <div><Link to='/person'>person</Link></div>
-          <div><Link to='/welcomedialog'>welcomedialog</Link></div>
-          <div><Link to='/radiogroup'>radiogroup</Link></div>
-          <div><Link to='/button'>button</Link></div>
-          <div><Link to='/contextdemo'>contextdemo</Link></div>
-          <div><Link to='form'>form</Link></div>
-          <div><Link to='antdformdemo'>antdformdemo</Link></div>
-          <div><Link to='rcount'>rcount</Link></div>
-          <div><Link to='rrcount'>rrcount</Link></div>
-          <div><Link to='rrddemo'>rrddemo</Link></div>
-          <div><Link to='user'>user</Link></div>
-        </div>
+        {/* Header */}
+        <Header style={{ color: 'white' }}>
+          <a href='https://github.com/shanejix/make-wheels'>Make-Wheels</a>
+        </Header>
 
-        <div className="main">
-          <Switch>
+        <Content
+          style={{
+            paddingTop: 10,
+            paddingLeft: 250,
+            margin: '0 auto',
+            minHeight: 588,
+            display: 'flex',
+            flexWrap: 'wrap',
+            justifyContent: 'flex-start'
+          }}
+        >
 
-            {/* <Comment /> */}
 
-            {/* <Count /> */}
+          <Card pathname='Person' >
+            <Person></Person>
+          </Card>
 
-            <Route path='/person' component={Person} />
-            <Route path='/welcomedialog' component={WelcomeDialog} />
-            <Route path='/radiogroup' component={RadioGroup} />
-            <Route path='/button' component={Button} />
-            <Route path='/contextdemo' component={ContextDemo} />
-            {/* <Route path='form' component={Form} />
-            <Route path='antdformdemo' component={AntdFormDemo} />
-            <Route path='rcount' component={RCount} />
-            <Route path='rrcount' component={RRCount} />
-            <Route path='rrddemo' component={RRDDemo} />
-            <Route path='user' component={User} /> */}
-            <Route component={NotFound} />
-          </Switch>
-        </div>
+          <Card pathname='WelcomeDialog' >
+            <WelcomeDialog></WelcomeDialog>
+          </Card>
+
+          <Card pathname='RadioGroup' >
+            <RadioGroup></RadioGroup>
+          </Card>
+
+          <Card pathname='Button' >
+            <Button></Button>
+          </Card>
+
+          <Card pathname='ContextDemo' >
+            <ContextDemo></ContextDemo>
+          </Card>
+
+          <Card pathname='Form' >
+            <Form></Form>
+          </Card>
+
+          <Card pathname='AntdFormDemo' >
+            <AntdFormDemo></AntdFormDemo>
+          </Card>
+
+          <Card pathname='RCount' >
+            <RCount></RCount>
+          </Card>
+
+          <Card pathname='RRCount' >
+            <RRCount></RRCount>
+          </Card>
+
+          <Card pathname='RRDDemo' >
+            <RRDDemo></RRDDemo>
+          </Card>
+
+          <Card pathname='User' >
+            <User></User>
+          </Card>
+          <Card pathname='User' >
+            <User></User>
+          </Card>
+          <Card pathname='User' >
+            <User></User>
+          </Card>
+          <Card pathname='User' >
+            <User></User>
+          </Card>
+          <Card pathname='User' >
+            <User></User>
+          </Card>
+          <Card pathname='User' >
+            <User></User>
+          </Card>
+          <Card pathname='User' >
+            <User></User>
+          </Card>
+          <Card pathname='User' >
+            <User></User>
+          </Card>
+
+        </Content>
+
+        <Footer
+          style={{ textAlign: 'center' }}>@shane</Footer>
       </Layout>
 
 
