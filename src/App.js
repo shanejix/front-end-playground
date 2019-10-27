@@ -1,7 +1,7 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route, Link } from 'react-router-dom'
+import { BrowserRouter, } from 'react-router-dom'
 
-import { Layout, AutoComplete } from 'antd';
+import { Layout } from 'antd';
 
 // import Comment from './ReactComp/UICompAndContainerComp/Comment'
 // import Count from './ReactComp/PureComponent/Count'

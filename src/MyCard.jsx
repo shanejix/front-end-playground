@@ -1,7 +1,6 @@
 import React from "react";
 
 import { Card } from "antd";
-import { hidden } from "ansi-colors";
 
 const basename = "https://github.com/shanejix/make-wheels/tree/master/src/";
 
