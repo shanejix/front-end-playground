@@ -1,6 +1,7 @@
 
 //demo
 
+/*
 new Promise(
   //excutor
   (resolve, reject) => {
@@ -14,7 +15,7 @@ new Promise(
     reject('error')
   }
 )
-
+*/
 
 
 //es6,class
@@ -25,8 +26,10 @@ class myPromise {
   //构造函数,executor
   constructor(executor) {
 
+    //success callback
     let resolve = () => { }
 
+    //fail callback
     let reject = () => { }
 
     executor(resolve, reject)
@@ -34,6 +37,5 @@ class myPromise {
 }
 
 
-//use
 
-new myPromise()
+export default myPromise
