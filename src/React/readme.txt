@@ -1,0 +1,1 @@
+https://github.com/facebook/react/blob/master/packages/react/src/React.js
