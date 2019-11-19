@@ -1,23 +1,15 @@
-import React from "react";
-import PropTypes, { object } from "prop-types";
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 import { ButtonTypes, ButtonSizes, ButtonThemes } from "./buttonTypes";
+import { IconTypes } from "../Icon/iconTypes";
 import Icon from "../Icon/Icon";
-import IconTypes from "../Icon/iconTypes";
 
-import './button.css'
+import "./button.css";
 
-export default function Button(props) {
-  const { disabled, icon, label } = props;
-
-  let { onClickHander } = props;
-
-  //fixme:action???
-  onClickHander = onClickHander || (() => { console.log('click') });
-
-  function getButtonClass() {
-    const { icon, size, theme, type } = props;
-
+export default class Button extends Component {
+  getButtonClasses() {
+    const { icon, size, theme, type } = this.props;
     const buttonClasses = [
       "button",
       `button--${size}`,
@@ -28,37 +20,37 @@ export default function Button(props) {
     icon && icon !== IconTypes.NONE && buttonClasses.push("button--icon");
 
     return buttonClasses.join(" ");
-
   }
-
-  return (
-    <button
-      className={getButtonClass()}
-      onClick={event => onClickHander(event.target)}
-      disabled={disabled}
-    >
-      {icon && <Icon icon={icon} />}
-      {label}
-    </button>
-  );
+  render() {
+    const { disabled, onClickHandler, label, icon } = this.props;
+    return (
+      <button
+        className={this.getButtonClasses()}
+        onClick={event => onClickHandler(event.target)}
+        disabled={disabled}
+      >
+        {icon && <Icon icon={icon} />}
+        {label}
+      </button>
+    );
+  }
 }
-Button.propsTypes = {
+Button.propTypes = {
   type: PropTypes.oneOf(Object.values(ButtonTypes)),
   disabled: PropTypes.bool,
-  onClickHander: PropTypes.func.isRequired,
+  onClickHandler: PropTypes.func.isRequired,
   label: PropTypes.string.isRequired,
   size: PropTypes.oneOf(Object.values(ButtonSizes)),
   theme: PropTypes.oneOf(Object.values(ButtonThemes)),
   icon: PropTypes.oneOf(Object.values(IconTypes))
 };
 
-Button.defautProps = {
+Button.defaultProps = {
   type: ButtonTypes.PRIMARY,
-  onClickHander: () => console.log("no click hander specified"),
+  onClickHandler: () => console.log("No click handler specified"),
+  label: "",
   disabled: false,
   size: ButtonSizes.MEDIUM,
   theme: ButtonThemes.LIGHT,
   icon: IconTypes.NONE
 };
-
-
