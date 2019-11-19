@@ -5,12 +5,36 @@ import { ButtonTypes, ButtonSizes, ButtonThemes } from "./buttonTypes";
 import Icon from "../Icon/Icon";
 import IconTypes from "../Icon/iconTypes";
 
+import './button.css'
+
 export default function Button(props) {
-  const { onClickHander, disabled, icon, label } = props;
+  const { disabled, icon, label } = props;
+
+  let { onClickHander } = props;
+
+  //fixme:action???
+  onClickHander = onClickHander || (() => { console.log('click') });
+
+  function getButtonClass() {
+    const { icon, size, theme, type } = props;
+
+    const buttonClasses = [
+      "button",
+      `button--${size}`,
+      `button--${theme}`,
+      `button--${type}`
+    ];
+
+    icon && icon !== IconTypes.NONE && buttonClasses.push("button--icon");
+
+    return buttonClasses.join(" ");
+
+  }
+
   return (
     <button
       className={getButtonClass()}
-      onClick={e => onClickHander(e.target)}
+      onClick={event => onClickHander(event.target)}
       disabled={disabled}
     >
       {icon && <Icon icon={icon} />}
@@ -37,4 +61,4 @@ Button.defautProps = {
   icon: IconTypes.NONE
 };
 
-function getButtonClass() {}
+
