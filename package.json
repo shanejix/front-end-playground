@@ -1,7 +1,21 @@
 {
   "name": "root",
   "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
   "devDependencies": {
     "lerna": "^4.0.0"
+  },
+  "scripts": {
+    "bootstrap": "lerna bootstrap",
+    "clean": "lerna clean"
+  },
+  "dependencies": {
+    "customize-cra": "^1.0.0",
+    "less": "^4.1.1",
+    "less-loader": "5.0.0",
+    "react-app-rewired": "^2.1.8",
+    "wrapper-rc-motion": "file:packages/wrapper-rc-motion"
   }
 }

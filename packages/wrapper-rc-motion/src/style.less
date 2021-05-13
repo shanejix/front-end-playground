@@ -1,0 +1,122 @@
+.btn-default {
+  margin: 10px 0;
+}
+
+.demo {
+  height: 200px;
+  line-height: 200px;
+  text-align: center;
+  background: rebeccapurple;
+  color: red;
+  border: 1px solid #666;
+
+  &-wrap {
+    height: 200px;
+    z-index: -1;
+    position: relative;
+  }
+  &-block {
+    display: inline-block;
+    height: 100px;
+    width: 100px;
+    border-right: 5px solid #fff;
+    position: relative;
+    box-sizing: border-box;
+    background: red;
+
+    > span {
+      color: #fff;
+      font-size: 30px;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      // background: rebeccapurple;
+    }
+  }
+}
+
+.hidden {
+  display: none !important;
+}
+
+.transition {
+  transition: background 0.3s, height 1.3s, opacity 1.3s;
+  // transition: all 5s!important;
+
+  &.transition-appear,
+  &.transition-enter {
+    opacity: 0;
+  }
+
+  &.transition-appear.transition-appear-active,
+  &.transition-enter.transition-enter-active {
+    opacity: 1;
+  }
+
+  &.transition-leave-active {
+    opacity: 0;
+    // background: green;
+  }
+}
+
+.transition-all {
+  transition: all 0.5s;
+}
+
+.animation {
+  animation-duration: 1.3s;
+  animation-fill-mode: both;
+
+  &.animation-appear,
+  &.animation-enter {
+    animation-name: enter;
+    animation-fill-mode: both;
+    animation-play-state: paused;
+  }
+
+  &.animation-appear.animation-appear-active,
+  &.animation-enter.animation-enter-active {
+    animation-name: enter;
+    animation-play-state: running;
+  }
+
+  &.animation-leave {
+    animation-name: leave;
+    animation-fill-mode: both;
+    animation-play-state: paused;
+
+    &.animation-leave-active {
+      animation-name: leave;
+      animation-play-state: running;
+    }
+  }
+}
+
+.hidden {
+  display: none !important;
+}
+
+@keyframes enter {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes leave {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+
