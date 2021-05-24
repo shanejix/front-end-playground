@@ -4,6 +4,8 @@ import classNames from 'classnames';
 
 import './style.less'
 
+// https://github.com/react-component/motion
+
 function App() {
 
   const [fadeIn, setFadeIn] = useState(true);
