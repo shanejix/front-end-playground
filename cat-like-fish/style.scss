@@ -1,0 +1,216 @@
+$cat:rgb(252, 180, 125);
+
+:root{
+    --bgColor:rgb(81, 136, 168);
+    --eyeHideTop:0px;
+    --cloudLeft:45%;
+    --mouthRadius:10px 10px 0 0;
+}
+#app{
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // background-image: repeating-linear-gradient(0deg, hsla(340,87%,75%,0.2) 0px, hsla(340,87%,75%,0.2) 30px,transparent 30px, transparent 60px),repeating-linear-gradient(90deg, hsla(340,87%,75%,0.2) 0px, hsla(340,87%,75%,0.2) 30px,transparent 30px, transparent 60px),linear-gradient(90deg, rgb(255,255,255),rgb(255,255,255));
+}
+
+.warrper{
+    width: 320px;
+    height: 320px;
+    // border-radius: 50%;
+    border: 10px solid white;
+    position: relative;
+    overflow: hidden;
+    background-color: var(--bgColor);
+    transition: background-color 1s linear;
+    cursor:url("./assets/fish.png"),default;
+    &:hover{
+        --bgColor:rgb(178, 222, 247);
+        --eyeHideTop:-20px;
+        --cloudLeft:100%;
+        --mouthRadius:0 0 10px 10px;
+    }
+}
+
+
+.sun{
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  background-color: rgb(255, 229, 142);
+  border:7px solid rgb(253, 215, 91);
+  border-radius: 50%;
+  left: 55%;
+  top: 14%;
+  box-shadow: 0 0 6px rgb(255, 241, 48);
+}
+
+.cloud{
+  width: 100px;
+  height: 36px;
+  background-color: white;
+  position: absolute;
+  transition:left .6s linear;
+  left: var(--cloudLeft);
+  top: 23%;
+  border-radius: 36px;
+  animation: bouncy 2s ease-in-out infinite;
+  &::before{
+      content: '';
+      width: 50px;
+      height: 50px;
+      background-color: white;
+      border-radius: 50%;
+      position: absolute;
+      top: -23px;
+      left: 18px;
+  }
+  &::after{
+      content: '';
+      width: 26px;
+      height: 26px;
+      background-color: white;
+      border-radius: 50%;
+      position: absolute;
+      top: -16px;
+      left: 56px;
+  }
+}
+
+@keyframes bouncy {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+      transform: scale(1.25);
+  }
+  100% {
+      transform: scale(1);
+  }
+}
+
+.cat{
+  width: 180px;
+  height: 160px;
+  background-color: $cat;
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  margin-left: -90px;
+  animation: wait 2s ease-in-out infinite;
+  &::after,
+  &::before{
+      content: '';
+      display: block;
+      border-style: solid;
+      border-width: 20px 30px;
+      position: absolute;
+      top: -30px;    
+  }
+  &::after{
+      right: 0;
+      border-color: transparent $cat $cat transparent;
+  }
+  &::before{
+      left: 0;
+      border-color: transparent transparent $cat $cat;
+  }
+  .eye{
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      position: absolute;
+      top: 30px;
+      background:white;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .eye-hide{
+          height: 20px;
+          position: absolute;
+          top: var(--eyeHideTop);
+          left: -2px;
+          right:-2px;
+          background-color: $cat;
+          transition: top .5s ease-in-out;
+          z-index: 2;
+      }
+      &::before{
+          content: "";
+          height: 36px;
+          width: 36px;
+          background-color:black;
+          border-radius: 50%;
+      }
+      &::after{
+          content: "";
+          width: 24px;
+          height: 24px;
+          background-color: white;
+          border-radius: 50%;
+          position: absolute;
+          right: 0px;
+          top: 0px; 
+      }
+      &.left{
+          left: 24px;
+      }
+      &.right{
+          right: 24px;
+      }
+  }
+  .nose{
+      width: 0;
+      height: 0;
+      border-top: 7px solid rgb(248, 226, 226);
+      border-left: 7px solid transparent;
+      border-right: 7px solid transparent;
+      position: absolute;
+      left: 50%;
+      margin-left: -7px;
+      top: 70px;
+  }
+  .mouth{
+      width: 26px;
+      height: 20px;
+      background-color: rgb(255, 217, 217);
+      position: absolute;
+      top: 85px;
+      left: 50%;
+      margin-left: -13px;
+      border-radius: var(--mouthRadius);
+      transition: border-radius .2s linear;
+      overflow: hidden;
+      &::after,
+      &::before{
+          content: "";
+          position: absolute;
+          display: block;
+          top: 0;
+          border-top: 7px solid white;
+          border-left: 2px solid transparent;
+          border-right: 2px solid transparent;
+      }
+      &::after{
+          right: 5px;
+      }
+      &::before{
+          left: 5px;
+      }
+  }
+}
+
+@keyframes wait{
+  0% {
+      bottom: -20px;
+  }
+  50% {
+      bottom: -25px;
+  }
+  100% {
+      bottom: -20px;
+  }
+}
