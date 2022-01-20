@@ -54,7 +54,7 @@ class Promise {
 
     if (this.status === 'fulfilled') {
       // 如果promise1(此处即为this)的状态已经确定并且是fulfilled，调用onResolved
-      return promise2 = new Promise(function (resolve, reject) {
+      return promise2 = new Promise((resolve, reject) => {
         // 因为考虑到有可能throw，所以将其包在try/catch块里
         try {
           const x = onResolved(this.data)
@@ -73,7 +73,7 @@ class Promise {
 
     // 如果promise1(此处即为this)的状态已经确定并且是rejected，调用onRejected
     if (this.status === 'rejected') {
-      return promise2 = new Promise(function (resolve, reject) {
+      return promise2 = new Promise((resolve, reject) => {
         // 因为考虑到有可能throw，所以将其包在try/catch块里
         try {
           const x = onRejected(this.data)
@@ -92,8 +92,8 @@ class Promise {
     // 只能等到Promise的状态确定后，才能确实如何处理
     // 所以需要把**两种情况**的处理逻辑做为callback放入promise1(此处即this)的回调数组里
     if (this.status === 'pending') {
-      return promise2 = new Promise(function (resolve, reject) {
-        this.onResolvedCallback.push(function (value) {
+      return promise2 = new Promise((resolve, reject) => {
+        this.onResolvedCallback.push((value) => {
           // 因为考虑到有可能throw，所以将其包在try/catch块里
           try {
             const x = onResolved(this.data)
@@ -104,7 +104,7 @@ class Promise {
             reject(e)
           }
         })
-        this.onRejectedCallback.push(function (reason) {
+        this.onRejectedCallback.push((reason) => {
           // 因为考虑到有可能throw，所以将其包在try/catch块里
           try {
             const x = onRejected(this.data)
