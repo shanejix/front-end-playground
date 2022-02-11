@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import AuthContext from "../stores/AuthContext";
-import { fakeAuth } from "../utils/fakeAuth";
+import fakeAuth  from "../utils/fakeAuth";
 
 const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
