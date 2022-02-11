@@ -52,29 +52,28 @@ class Promise {
    */
   then(onResolved, onRejected) {
 
-    let promise2
-
     // 根据标准，如果then的参数不是function，则需要忽略它，此处以如下方式处理
     onResolved = typeof onResolved === 'function' ? onResolved : (v) => v
     onRejected = typeof onRejected === 'function' ? onRejected : (r) => r
 
-    if (this.status === 'fulfilled') {
-      return promise2 = new Promise((resolve, reject) => {
+    const promise2 = new Promise((resolve, reject) => {
+      if (this.status === 'fulfilled') {
         // todo
-      })
-    }
 
-    if (this.status === 'rejected') {
-      return promise2 = new Promise((resolve, reject) => {
-        // todo
-      })
-    }
+      }
 
-    if (this.status === 'pending') {
-      return promise2 = new Promise((resolve, reject) => {
+      if (this.status === 'rejected') {
         // todo
-      })
-    }
+
+      }
+
+      if (this.status === 'pending') {
+        // todo
+
+      }
+    })
+
+    return promise2;
 
   }
 }

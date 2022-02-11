@@ -6,10 +6,14 @@ class Promise {
    * @param {*} executor 
    */
   constructor(executor) {
-    this.status = 'pending' // Promise当前的状态
-    this.data = undefined  // Promise的值
-    this.onResolvedCallback = [] // Promise resolve 时的回调函数集，因为在 Promise 结束之前有可能有多个回调添加到它上面
-    this.onRejectedCallback = [] // Promise reject 时的回调函数集，因为在 Promise 结束之前有可能有多个回调添加到它上面
+    // Promise当前的状态
+    this.status = 'pending'
+    // Promise的值
+    this.data = undefined
+    // Promise resolve 时的回调函数集，因为在 Promise 结束之前有可能有多个回调添加到它上面
+    this.onResolvedCallback = []
+    // Promise reject 时的回调函数集，因为在 Promise 结束之前有可能有多个回调添加到它上面
+    this.onRejectedCallback = []
 
     const resolve = (value) => {
       // todo
@@ -20,9 +24,11 @@ class Promise {
     }
 
     try {
-      executor(resolve, reject) // 执行 executor 并传入相应的参数
+      // 执行 executor 并传入相应的参数
+      executor(resolve, reject)
     } catch (e) {
-      reject(e) // 报错直接 reject
+      // 报错直接 reject
+      reject(e)
     }
   }
 }
