@@ -3,7 +3,6 @@ const PENDING = 'pending';
 const FULFILLED = 'fulfilled';
 const REJECTED = 'rejected';
 
-// 新建 Promise 类
 class Promise {
   /**
    * Promise 构造函数接收一个 executor 函数，
@@ -110,7 +109,7 @@ class Promise {
             // 2.2.5. onFulfilled 和 onRejected 必须作为函数调用。
             const x = onFulfilled(this.value);
             // 2.2.7.1. 如果 onFulfilled 或 onRejected 返回了一个值 x，则运行 Promise 处理程序 [[Resolve]](promise2, x)。
-            resolvePromise(promise2, x, resolve, reject);
+            promiseResolutionHandler(promise2, x, resolve, reject);
           } catch (error) {
             // 2.2.7.2. 如果 onFulfilled 或 onRejected 抛出了一个异常，promise2 必须用 e 作为 reason 来变为 rejected 状态。
             reject(error)
@@ -127,7 +126,7 @@ class Promise {
             // 2.2.5. onFulfilled 和 onRejected 必须作为函数调用。
             const x = onRejected(this.reason);
             // 2.2.7.1. 如果 onFulfilled 或 onRejected 返回了一个值 x，则运行 Promise 处理程序 [[Resolve]](promise2, x)。
-            resolvePromise(promise2, x, resolve, reject);
+            promiseResolutionHandler(promise2, x, resolve, reject);
           } catch (error) {
             // 2.2.7.2. 如果 onFulfilled 或 onRejected 抛出了一个异常，promise2 必须用 e 作为 reason 来变为 rejected 状态。
             reject(error)
@@ -170,23 +169,49 @@ class Promise {
 
 /**
  * 2.3. Promise 处理程序
- * Promise 处理程序是一个将 promise 和 value 作为输入的抽象操作，将其表示为 [[Resolve]](promise, x)。
- * 补充说明：这里将 resolve 和 reject 也传入进来，因为后续要根据不同的逻辑对 promise 执行 fulfill 或 reject 操作。
- * @param {*} promise 
+ * Promise 处理程序是一个将 promise2 和 value 作为输入的抽象操作，将其表示为 [[Resolve]](promise2, x)。
+ * 补充说明：这里将 resolve 和 reject 也传入进来，因为后续要根据不同的逻辑对 promise2 执行 fulfill 或 reject 操作。
+ * @param {*} promise2 
  * @param {*} x 
  * @param {*} resolve 
  * @param {*} reject 
  * @returns 
  */
-function resolvePromise(promise, x, resolve, reject) {
-  // 2.3.1. 如果 promise 和 x 引用的是同一个对象，promise 将以一个 TypeError 作为 reason 来进行 reject。
-  if (promise === x) {
+function promiseResolutionHandler(promise2, x, resolve, reject) {
+  // 2.3.1. 如果 promise2 和 x 引用的是同一个对象，promise2 将以一个 TypeError 作为 reason 来进行 reject。
+  if (promise2 === x) {
     return reject(new TypeError("Chaining cycle detected for promise"));
   }
 
+  /**
+   
+  // 与 2.3.3 有重叠部分
+
+  // 2.3.2. 如果 x 是一个 Promise，根据它的状态：
+  if (x instanceof Promise) {
+    // 2.3.2.1. 如果 x 的状态为 pending，Promise 必须保持 pending 状态直到 x 的状态变为 fulfilled 或 rejected。
+    if (x.state === "pending") {
+      x.then(
+        (value) => {
+          promiseResolutionHandler(promise2, value, resolve, reject);
+        },
+        reject
+      );
+    } else if (x.state === "fulfilled") {
+      // 2.3.2.2. 如果 x 的状态为 fulfilled，那么 promise2 也用同样的值来执行 fulfill 操作。
+      resolve(x.data);
+    } else if (x.state === "rejected") {
+      // 2.3.2.3. 如果 x 的状态为 rejected，那么 promise2 也用同样的 reason 来执行 reject 操作。
+      reject(x.data);
+    }
+    return;
+  }
+
+  */
+
   // 2.3.3. 除此之外，如果 x 是一个对象或者函数，
   if (typeof x === 'object' || typeof x === 'function') {
-    // 如果 x 是 null，应该直接 resolve
+    // 如果 x 是 null，直接 resolve
     if (x === null) {
       return resolve(x);
     }
@@ -202,39 +227,40 @@ function resolvePromise(promise, x, resolve, reject) {
         try {
           then.call(
             x,
-            // 2.3.3.3.1. 假设 resolvePromise 使用一个名为 y 的值来调用，运行 promise 处理程序 [[Resolve]](promise, y)。
-            (y) => {
+            // 2.3.3.3.1. 假设 resolvePromise 使用一个名为 y 的值来调用，运行 Promise 处理程序 [[Resolve]](promise, y)。
+            function resolvePromise(y) {
               // 2.3.3.3.3. 如果 resolvePromise 和 rejectPromise 都被调用，或者多次调用同样的参数，则第一次调用优先，任何之后的调用都将被忽略。
               if (isCalled) return;
               isCalled = true;
-              resolvePromise(promise, y, resolve, reject);
+              promiseResolutionHandler(promise2, y, resolve, reject);
             },
-            // 2.3.3.3.2. 假设 rejectPromise 使用一个名为 r 的 reason 来调用，则用 r 作为 reason 对 promise 执行 reject 操作。
-            (r) => {
+            // 2.3.3.3.2. 假设 rejectPromise 使用一个名为 r 的 reason 来调用，则用 r 作为 reason 对 promise2 执行 reject 操作。
+            function rejectPromise(r) {
               if (isCalled) return;
               isCalled = true;
               reject(r);
-            });
+            }
+          );
         } catch (error) {
           // 2.3.3.3.4. 如果调用 then 时抛出一个异常 e，
           // 2.3.3.3.4.1. 如果 resolvePromise 或 rejectPromise 已经被调用过了，则忽略异常。
           if (isCalled) return;
 
-          // 2.3.3.3.4.2. 否则，使用 e 作为 reason 对 promise 执行 reject 操作。
+          // 2.3.3.3.4.2. 否则，使用 e 作为 reason 对 promise2 执行 reject 操作。
           reject(error);
         }
       } else {
-        // 2.3.3.4. 如果 then 不是一个函数，使用 x 作为值对 promise 执行 fulfill 操作。
+        // 2.3.3.4. 如果 then 不是一个函数，使用 x 作为值对 promise2 执行 fulfill 操作。
         resolve(x);
       }
     } catch (error) {
-      // 2.3.3.2. 如果检索 x.then 的结果抛出异常 e，使用 e 作为 reason 对 promise 执行 reject 操作。
+      // 2.3.3.2. 如果检索 x.then 的结果抛出异常 e，使用 e 作为 reason 对 promise2 执行 reject 操作。
       return reject(error);
     }
 
 
   } else {
-    // 2.3.4. 如果 x 不是一个对象或者函数，使用 x 作为值对 promise 执行 fulfill 操作。
+    // 2.3.4. 如果 x 不是一个对象或者函数，使用 x 作为值对 promise2 执行 fulfill 操作。
     resolve(x);
   }
 }

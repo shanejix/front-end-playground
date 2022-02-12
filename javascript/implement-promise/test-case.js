@@ -1,4 +1,4 @@
-const Promise = require("./promise-then.js");
+const Promise = require("./promise.js");
 
 // 根据官方文档暴露一个 deferred 方法，返回一个包含 promise、resolve、reject 的对象
 Promise.deferred = function () {
