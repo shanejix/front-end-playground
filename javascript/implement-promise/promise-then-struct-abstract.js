@@ -78,38 +78,43 @@ class Promise {
   }
 
   /**
-  * then方法接收两个参数，onResolved，onRejected，分别为Promise成功或失败后的回调
-  * @param {*} onResolved 
-  * @param {*} onRejected 
-  * @returns 
-  */
+   * then方法接收两个参数，onResolved，onRejected，分别为Promise成功或失败后的回调
+   * @param {*} onResolved 
+   * @param {*} onRejected 
+   * @returns 
+   */
   then(onResolved, onRejected) {
+
+    let promise2
 
     // 根据标准，如果then的参数不是function，则需要忽略它，此处以如下方式处理
     onResolved = typeof onResolved === 'function' ? onResolved : (v) => v
     onRejected = typeof onRejected === 'function' ? onRejected : (r) => { throw r }
 
-    const promise2 = new Promise((resolve, reject) => {
-      if (this.status === 'fulfilled') {
+    if (this.status === 'fulfilled') {
+      return promise2 = new Promise((resolve, reject) => {
         // todo
+      })
+    }
 
-      }
-
-      if (this.status === 'rejected') {
+    if (this.status === 'rejected') {
+      return promise2 = new Promise((resolve, reject) => {
         // todo
+      })
+    }
 
-      }
-
-      if (this.status === 'pending') {
+    if (this.status === 'pending') {
+      return promise2 = new Promise((resolve, reject) => {
         // todo
-
-      }
-    })
-
-    return promise2;
+      })
+    }
 
   }
 }
+
+
+
+
 
 
 

@@ -1,0 +1,12 @@
+{
+  "name": "implement-promise",
+  "version": "1.0.0",
+  "description": "",
+  "main": "promise-final.js",
+  "scripts": {
+    "test": "promises-aplus-tests test-case.js"
+  },
+  "devDependencies": {
+    "promises-aplus-tests": "^2.1.2"
+  }
+}
