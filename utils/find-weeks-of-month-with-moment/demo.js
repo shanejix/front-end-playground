@@ -1,6 +1,6 @@
 const moment = require('moment');
 
-function generateWeeksOfMonth() {
+function generateWeeksOfMonth(startDate) {
   const firstDay = moment(startDate).startOf('month')
   const endDay = moment(startDate).endOf('month')
 
@@ -10,7 +10,6 @@ function generateWeeksOfMonth() {
 
   const weeks = []
   for (let mday of monthRange) {
-    mday.week();
     if (weeks.indexOf(mday.week()) === -1) {
       weeks.push(mday.week());
     }
@@ -18,17 +17,20 @@ function generateWeeksOfMonth() {
 
   const calendar = []
   for (let index = 0; index < weeks.length; index++) {
-    var weeknumber = weeks[index];
-    firstWeekDay = moment(firstDay).week(weeknumber).day(0);
+    const weeknumber = weeks[index];
+    let firstWeekDay = moment(firstDay).week(weeknumber).day(0);
+
     if (firstWeekDay.isBefore(firstDay)) {
       firstWeekDay = firstDay;
     }
-    lastWeekDay = moment(endDay).week(weeknumber).day(6);
+
+    let lastWeekDay = moment(endDay).week(weeknumber).day(6);
     if (lastWeekDay.isAfter(endDay)) {
       lastWeekDay = endDay;
     }
-    // weekRange = moment.range(firstWeekDay, lastWeekDay)
-    weekRange = generateDateRange(firstWeekDay, lastWeekDay)
+
+    // const weekRange = moment.range(firstWeekDay, lastWeekDay)
+    const weekRange = generateDateRange(firstWeekDay, lastWeekDay)
     calendar.push(weekRange)
   }
 
