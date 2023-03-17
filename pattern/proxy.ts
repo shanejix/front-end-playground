@@ -23,7 +23,6 @@ class ProxyC implements Subject {
   }
 
   private checkAccess(): boolean {
-    // Some real checks should go here.
     console.log('Proxy: Checking access prior to firing a real request.');
 
     return true;
